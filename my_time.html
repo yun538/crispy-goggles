@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时时间显示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a6dff, #07C160);
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            color: white;
+        }
+        
+        .time-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            position: relative;
+        }
+        
+        .time {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            font-size: 1.8rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .creator {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .creator a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+        }
+        
+        .creator a:hover {
+            opacity: 1;
+            border-bottom-color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .time {
+                font-size: 3rem;
+            }
+            
+            .date {
+                font-size: 1.2rem;
+            }
+            
+            .creator {
+                position: static;
+                margin-top: 20px;
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="time-container">
+        <div class="time" id="currentTime">14:30:45</div>
+        <div class="date" id="currentDate">2023年10月15日 星期日</div>
+        <div class="creator">
+            制作人: <a href="mailto:your-email@example.com">马*智</a>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            
+            // 格式化时间
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+            
+            // 格式化日期
+            const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const weekday = weekdays[now.getDay()];
+            document.getElementById('currentDate').textContent = `${year}年${month}月${day}日 ${weekday}`;
+        }
+        
+        // 初始更新时间并设置定时器
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
