@@ -52,15 +52,10 @@
             opacity: 0.7;
         }
         
-        .creator a {
+        .creator-text {
             color: white;
-            text-decoration: none;
+            cursor: default;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
-        }
-        
-        .creator a:hover {
-            opacity: 1;
-            border-bottom-color: white;
         }
         
         @media (max-width: 768px) {
@@ -86,7 +81,7 @@
         <div class="time" id="currentTime">14:30:45</div>
         <div class="date" id="currentDate">2023年10月15日 星期日</div>
         <div class="creator">
-            制作人: <a href="我不知道你的邮箱">马*智</a>
+            <span class="creator-text" title="You didn't tell me the email address.">制作人: 马*智</span>
         </div>
     </div>
 
