@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<script>
+setInterval(()=>{
+  const d = new Date();
+  document.body.innerHTML = 
+    d.toLocaleTimeString() + '.' + 
+    d.getMilliseconds().toString().padStart(3,'0');
+},50)
+</script>
+</html>
